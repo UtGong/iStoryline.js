@@ -37,6 +37,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "canvas": "^2.10.2",
+    "d3": "^7.8.3",
     "d3-fetch": "^1.1.2",
     "d3-scale": "^3.2.0",
     "lodash": "^4.17.19",
@@ -50,6 +51,7 @@
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.9.6",
+    "@types/d3": "^7.4.0",
     "chai": "^4.2.0",
     "eslint-config-prettier": "^6.11.0",
     "esm": "^3.2.25",

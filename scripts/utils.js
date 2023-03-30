@@ -115,7 +115,7 @@ function saveStorylineImage(graph, imgName = 'test', imgW = 5000, imgH = 5000) {
 function drawJointSubGraphs(
   storyJson,
   partition,
-  isJoint = true,
+  isJoint = false,
   width = 3000,
   padding = 100,
   minY = 10,

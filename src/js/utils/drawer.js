@@ -1,4 +1,5 @@
 import Snap from 'snapsvg'
+import * as d3 from 'd3'
 
 export function drawSegmentPath(pathStr, defaultWidth = 2, hoverWidth = 4) {
   const svg = Snap('#mySvg')
@@ -72,4 +73,62 @@ function generateBezierPath(points) {
   }
   pathStr += ` L ${points[pointsNum - 1][0]} ${points[pointsNum - 1][1]}`
   return pathStr
+}
+
+export function drawSquares(partition, padding) {
+  const svg = d3.select('#svg-container')
+
+  const graphicsContainerHeight = document.querySelector('.graphics-container')
+    .clientHeight
+  const graphicsContainerWidth = document.querySelector('.graphics-container')
+    .clientWidth
+
+  const numSquares = partition.length + 1
+  const squareWidth =
+    (graphicsContainerWidth - 40 - padding * (numSquares - 1)) / numSquares
+  const squareHeight = squareWidth
+
+  const yOffset = (graphicsContainerHeight - squareHeight) / 2
+
+  svg.attr(
+    'viewBox',
+    `0 0 ${graphicsContainerWidth} ${graphicsContainerHeight}`
+  )
+
+  svg
+    .selectAll('rect')
+    .data(partition)
+    .enter()
+    .append('rect')
+    .attr('x', (d, i) => {
+      const xOffset =
+        (graphicsContainerWidth -
+          squareWidth * numSquares -
+          padding * (numSquares - 1)) /
+        2
+      return xOffset + i * (squareWidth + padding)
+    })
+    .attr('y', yOffset)
+    .attr('width', squareWidth)
+    .attr('height', squareHeight)
+    .attr('fill', 'white')
+    .attr('rx', 30) // set the x-axis radius of the corners to 5
+    .attr('ry', 30)
+
+  svg
+    .append('rect')
+    .attr(
+      'x',
+      (numSquares - 1) * (squareWidth + padding) +
+        (graphicsContainerWidth -
+          squareWidth * numSquares -
+          padding * (numSquares - 1)) /
+          2
+    )
+    .attr('y', yOffset)
+    .attr('width', squareWidth)
+    .attr('height', squareHeight)
+    .attr('fill', 'white')
+    .attr('rx', 30) // set the x-axis radius of the corners to 5
+    .attr('ry', 30)
 }
