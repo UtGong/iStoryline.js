@@ -192,18 +192,24 @@ input[type='range']:focus::-ms-thumb {
   background: #cfe7f1;
   flex-direction: column;
   margin-bottom: 0px;
+  justify-content: center;
+  align-items: center;
 }
 
 .graphics-container svg {
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 
 footer {
   background-color: #2c3c43;
-  padding: 25px 0px;
+  padding: 10px 0px;
   color: #c0d6df;
   bottom: 0;
   width: 100%;
   flex: 0 0 auto;
+}
+
+.footer-line1 {
+  padding-left: 15px;
 }
